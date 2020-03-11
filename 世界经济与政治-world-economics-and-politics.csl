@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.0" sort-separator="；" page-range-format="chicago" demote-non-dropping-particle="sort-only" default-locale="zh-CN">
+  <info>
+    <title>世界经济与政治 World Economics and Politics (chinese)</title>
+    <id>http://www.zotero.org/styles/世界经济与政治-World-Economics-and-Politics</id>
+    <author>
+      <name> edward zhou</name>
+      <email>edwardzhoujiaxi@gmail.com</email>
+    </author>
+    <category citation-format="note"/>
+    <category field="chinese social science"/>
+    <category field="chinese humanities"/>
+    <summary>根据fanzhen《历史研究》引文规范以及《世经政》引文规范改制，支持中英混排，仅支持今人论文、图书、章节、学位论文、网页</summary>
+    <published>2019-03-06</published>
+    <updated>2020-03-08T12:12:06+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" suffix="">
+      <name delimiter="、" sort-separator="，"/>
+    </names>
+    <names variable="editor" suffix="编">
+      <name delimiter="、" sort-separator="，"/>
+    </names>
+  </macro>
+  <macro name="container-title">
+    <text variable="container-title" prefix="载《" suffix="》，"/>
+  </macro>
+  <macro name="container-author">
+    <names variable="container-author">
+      <name delimiter="、"/>
+    </names>
+  </macro>
+  <macro name="pageField">
+    <choose>
+      <if type="chapter" match="any">
+        <text variable="page" prefix="第" suffix="页。"/>
+      </if>
+      <else/>
+    </choose>
+  </macro>
+  <macro name="secondAuthor">
+    <names variable="translator" suffix="译">
+      <name delimiter="、"/>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <choose>
+      <if type="article article-journal article-magazine article-newspaper" match="any"/>
+      <else>
+        <text variable="abstract"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="place: publisher">
+    <text variable="publisher-place" suffix="："/>
+    <text variable="publisher"/>
+  </macro>
+  <macro name="en-layout">
+    <names variable="author" suffix=", "/>
+    <choose>
+      <if type="book" match="any">
+        <text variable="title" font-style="italic" suffix=", "/>
+        <names variable="translator" prefix="trans. " suffix=", "/>
+        <text variable="publisher-place" suffix=": "/>
+        <text variable="publisher" suffix=", "/>
+        <date date-parts="year" form="numeric" variable="issued"/>
+      </if>
+      <else-if type="chapter" match="any">
+        <text variable="title" prefix="&quot;" suffix=",&quot; "/>
+        <names variable="container-author" prefix="in " suffix=", eds., "/>
+        <text variable="container-title" font-style="italic" suffix=", "/>
+        <text variable="publisher-place" suffix=": "/>
+        <text variable="publisher" suffix=", "/>
+        <date date-parts="year" form="numeric" variable="issued" suffix=", "/>
+        <text variable="page" prefix="pp. "/>
+      </else-if>
+      <else-if type="webpage" match="any">
+        <text variable="title" prefix="&quot;" suffix=",&quot; "/>
+        <text variable="container-title" font-style="italic" suffix=", "/>
+        <text variable="URL" suffix=", "/>
+        <date form="numeric" variable="issued" prefix="访问时间："/>
+      </else-if>
+      <else-if type="thesis" match="any">
+        <text variable="title" font-style="italic" suffix=", "/>
+        <text variable="publisher-place" suffix=": "/>
+        <text variable="publisher" suffix=", "/>
+         <text variable="genre" suffix=" Thesis, "/>
+        <date date-parts="year" form="numeric" variable="issued"/>
+      </else-if>
+      <else>
+        <text variable="title" prefix="&quot;" suffix=",&quot; "/>
+        <text variable="container-title" font-style="italic" suffix=", "/>
+        <text variable="volume" prefix="Vol. " suffix=", "/>
+        <text variable="issue" prefix="No. " suffix=", "/>
+        <date date-parts="year" form="text" variable="issued" suffix=", "/>
+        <text variable="page" prefix="pp. "/>
+      </else>
+    </choose>
+  </macro>
+  <citation>
+    <layout locale="en English en-GB en-gb en-us en-US eng" suffix=".">
+      <text macro="en-layout"/>
+    </layout>
+    <layout suffix="。">
+      <choose>
+        <if type="article article-journal article-magazine" match="any">
+          <names variable="author" suffix="："/>
+          <text variable="title" prefix="《" suffix="》，"/>
+          <text macro="container-title"/>
+          <date date-parts="year" form="text" variable="issued"/>
+          <text variable="issue" prefix="第" suffix="期"/>
+          <text variable="page" prefix="，第" suffix="页"/>
+        </if>
+        <else-if type="article-newspaper" match="any">
+          <names variable="author"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <text macro="container-title"/>
+          <date form="text" variable="issued"/>
+        </else-if>
+        <else-if type="chapter" match="any">
+          <names variable="author"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <names variable="editor" delimiter="、" prefix="载" suffix="主编"/>
+          <text variable="container-title" prefix="：《" suffix="》，"/>
+          <text macro="place: publisher"/>
+          <date date-parts="year" form="text" variable="issued" suffix="版"/>
+          <text variable="page" prefix="，第" suffix="页"/>
+        </else-if>
+        <else-if type="webpage" match="any">
+          <names variable="author"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <text variable="URL" prefix=" " suffix="，"/>
+          <date form="text" variable="accessed" prefix="访问时间："/>
+        </else-if>
+        <else-if type="thesis" match="any">
+          <names variable="author"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <text variable="publisher-place" suffix="："/>
+          <text variable="publisher"/>
+          <date date-parts="year" form="text" variable="issued"/>
+          <text variable="genre" suffix="学位论文"/>
+        </else-if>
+        <else>
+          <names variable="author" suffix="著"/>
+          <names variable="editor" suffix="主编"/>
+          <names variable="translator"  prefix="，" suffix="译"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <text macro="place: publisher"/>
+          <date date-parts="year" form="text" variable="issued" suffix="版"/>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography>
+    <sort>
+      <key variable="author"/>
+    </sort>
+    <layout locale="en English en-GB en-gb en-us en-US eng" suffix=".">
+      <text macro="en-layout"/>
+    </layout>
+    <layout suffix="。">
+      <choose>
+        <if type="article article-journal article-magazine" match="any">
+          <names variable="author"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <text macro="container-title"/>
+          <date date-parts="year" form="text" variable="issued"/>
+          <text variable="issue" prefix="第" suffix="期"/>
+          <text variable="page" prefix="，第" suffix="页"/>
+        </if>
+        <else-if type="article-newspaper" match="any">
+          <names variable="author"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <text macro="container-title"/>
+          <date form="text" variable="issued"/>
+        </else-if>
+        <else-if type="chapter" match="any">
+          <names variable="author"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <names variable="editor" delimiter="、" prefix="载" suffix="主编"/>
+          <text variable="container-title" prefix="：《" suffix="》，"/>
+          <text macro="place: publisher"/>
+          <date date-parts="year" form="text" variable="issued" suffix="版"/>
+          <text variable="page" prefix="，第" suffix="页"/>
+        </else-if>
+        <else-if type="webpage" match="any">
+          <names variable="author"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <text variable="URL" prefix=" " suffix="，"/>
+          <date form="text" variable="accessed" prefix="访问时间："/>
+        </else-if>
+        <else-if type="thesis" match="any">
+          <names variable="author"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <text variable="publisher-place" suffix="："/>
+          <text variable="publisher"/>
+          <date date-parts="year" form="text" variable="issued"/>
+          <text variable="genre" suffix="学位论文"/>
+        </else-if>
+        <else>
+          <names variable="author" suffix="著"/>
+          <names variable="editor" suffix="主编"/>
+          <names variable="translator"  prefix="，" suffix="译"/>
+          <text variable="title" prefix="：《" suffix="》，"/>
+          <text macro="place: publisher"/>
+          <date date-parts="year" form="text" variable="issued" suffix="版"/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
